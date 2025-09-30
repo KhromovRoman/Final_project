@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Библиотека знаний{% endblock title %}
+
+{% block chooser %}{% endblock chooser %}
+
+{% block content %}
+    <div class="img">
+        <img src="media/photo/library.jpg" alt="Фото временно отсутствует">
+    </div>
+    <div class="find">
+        <h1>Библиотека файлов</h1>
+        <form method="GET" action="{% url 'urllibrary_list' %}" style="margin-bottom: 20px;">
+            <input type="text" name="search" placeholder="Поиск..." value="{{ request.GET.search }}"/>
+            <button type="submit">Искать</button>
+        </form>
+        {% for file in files %}
+            <div class="description">
+                <a href="{{ file.file.url }}">{{ file.title }}</a><br/>
+                Описание: {{ file.description }}
+            </div>
+        {% empty %}
+            <p>Нет файлов</p>
+        {% endfor %}
+        <a href="{% url 'urlupload_file' %}">Загрузить файл</a>
+    </div>
+{% endblock content %}

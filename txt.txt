@@ -1,0 +1,3 @@
+библиотеки
+pip install django-crispy-forms
+pip install channels channels_redis

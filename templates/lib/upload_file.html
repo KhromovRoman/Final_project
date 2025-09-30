@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Библиотека знаний{% endblock title %}
+
+{% block chooser %}{% endblock chooser %}
+
+{% block content %}
+    <div class="loader">
+        <h1>Загрузка файла</h1>
+        <form enctype="multipart/form-data" method="post">
+         {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+{% endblock content %}
